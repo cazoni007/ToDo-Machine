@@ -1,7 +1,6 @@
-function TodoItem () {
+function TodoItem ({contenido}) {
     return (
-        
-        <li>No hacer popo en el lavaplatos <span>X </span> <span>V</span></li>
+        <li> {contenido} <span>X </span> <span>V</span></li>
     )
 }
 

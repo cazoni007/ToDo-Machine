@@ -1,6 +1,6 @@
-function TodoCounter (props) {
+function TodoCounter ({cantidad}) {
     return (
-        <h1>Tienes 3 elementos en tu lista de ToDos</h1>
+        <h1>Tienes {cantidad} elementos en tu lista de ToDos</h1>
     )
 }
 

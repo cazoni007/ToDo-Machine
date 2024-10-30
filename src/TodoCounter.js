@@ -1,6 +1,7 @@
-function TodoCounter ({cantidad}) {
+import './TodoCounter.css';
+function TodoCounter ({cantidad, total}) {
     return (
-        <h1>Tienes {cantidad} elementos en tu lista de ToDos</h1>
+        <h1 className='counter'>Has completado <b>{cantidad}</b> de <b>{total}</b> TODOs</h1>
     )
 }
 

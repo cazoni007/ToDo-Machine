@@ -5,7 +5,6 @@ import { TodoSearch } from './TodoSearch';
 import { TodoList } from './TodoList';
 import { TodoItem } from './TodoItem';
 import { TodoButton } from './TodoButton';
-import './App.css';
 import React from 'react';
 
 const defaultTodos = [
@@ -25,7 +24,7 @@ function App() {
   // console.log(numbers);
   return (
     <MainSection>
-      <TodoCounter cantidad={4}/>
+      <TodoCounter cantidad={4} total={5}/>
       <TodoSearch/>
       <TodoList>
         {defaultTodos.map(todo => (

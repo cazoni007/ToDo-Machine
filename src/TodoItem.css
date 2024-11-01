@@ -1,0 +1,18 @@
+.todoItem {
+    width: 80%;
+    background-color: #FAFAFA;
+    margin: 2rem auto;
+    border-radius: 0.2rem;
+    box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.15);
+    list-style: none;
+    padding: 1.5rem 0;
+}
+.content {
+    width: 100%;
+    padding: 0 1rem;
+}
+.closeIcon {
+    position: relative;
+    top: -2.5rem;
+    left: calc(100% - 3.2rem);
+}

@@ -8,7 +8,7 @@ import { TodoButton } from './TodoButton';
 import React from 'react';
 
 const defaultTodos = [
-    {text: 'Cortar cebolla',
+    {text: 'Cortar cebolla skjhdkfj ahsdlf kjahsdkf hagsk djfgaskj dfga skdjfhagsdfj',
     completed: true },
     {text: 'Jugar con la llorona',
     completed: false },

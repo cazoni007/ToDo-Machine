@@ -16,3 +16,16 @@
     top: -2.5rem;
     left: calc(100% - 3.2rem);
 }
+.editIcon {
+    position: relative;
+    top: -1rem;
+    left: -1rem;
+}
+.completeIcon {
+    position: relative;
+    top: -1rem;
+}
+.editIcon img:hover, .completeIcon img:hover, .closeIcon img:hover {
+    cursor: pointer;
+    background-color: red;
+}

@@ -1,0 +1,25 @@
+.buttonIcon {
+    display: flex;
+    margin: 0 auto;
+    width: 3.072rem;
+    height: 3.072rem;
+    background: url('./Plus-Icon.svg') center/cover no-repeat;
+}
+.buttonContainer {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+.button {
+    border-radius: 7.5rem;
+    width: 6.4rem;
+    height: 6.4rem;
+    background-color: #61DAFA;
+    border: 0;
+    box-shadow: 0 0.5rem 2.5rem rgba(97, 218, 250, 0.5);
+}
+.button:hover {
+    cursor: pointer;
+}

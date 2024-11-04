@@ -13,19 +13,45 @@
 }
 .closeIcon {
     position: relative;
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    background: url('./Close-Item.svg') center/cover no-repeat;
     top: -2.5rem;
     left: calc(100% - 3.2rem);
 }
 .editIcon {
     position: relative;
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    background: url('./Edit-Icon.svg') center/cover no-repeat;
     top: -1rem;
-    left: -1rem;
+    left: 1rem;
 }
 .completeIcon {
     position: relative;
+    display: inline-block;
+    width: 2.4rem;
+    height: 2rem;
+    background: url('./Complete-Icon.svg') center/cover no-repeat;
     top: -1rem;
+    left: 2rem;
 }
-.editIcon img:hover, .completeIcon img:hover, .closeIcon img:hover {
+.editIcon img:hover, .completeIcon img:hover {
     cursor: pointer;
     background-color: red;
+}
+
+.closeIcon:hover {
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    background: url('./close-icon-red.svg') center no-repeat;
+}
+.completeIcon:hover {
+    cursor: pointer;
+    width: 3.2rem;
+    height: 2rem;
+    background: url('./complete-icon-green.svg') center/cover no-repeat;
 }

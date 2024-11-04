@@ -1,10 +1,7 @@
-import editIcon from './Edit-Icon.svg';
-import completeIcon from './Complete-Icon.svg';
-import closeIcon from './Close-Item.svg';
 import './TodoItem.css';
 function TodoItem ({contenido}) {
     return (
-        <li className="todoItem"><span className='closeIcon'><img src={closeIcon} alt="Cerrar icono"/></span><span className='editIcon'> <img src={editIcon} alt="Editar icono"/></span> <span className='completeIcon'><img src={completeIcon} alt="Completar icono"/></span> <p className='content'>{contenido}</p></li>
+        <li className="todoItem"><span className='closeIcon'></span><span className='editIcon'></span> <span className='completeIcon'></span><p className='content'>{contenido}</p></li>
     )
 }
 

@@ -7,12 +7,15 @@
 }
 .buttonContainer {
     width: 80%;
-    margin: 0 auto;
+    margin: 4.5rem auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
 }
 .button {
+    position: fixed;
+    margin-bottom: 1rem;
+    bottom: 0;
     border-radius: 7.5rem;
     width: 6.4rem;
     height: 6.4rem;

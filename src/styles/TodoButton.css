@@ -3,7 +3,7 @@
     margin: 0 auto;
     width: 3.072rem;
     height: 3.072rem;
-    background: url('./Plus-Icon.svg') center/cover no-repeat;
+    background: url('../assets/icons/Plus-Icon.svg') center/cover no-repeat;
 }
 .buttonContainer {
     width: 80%;
@@ -14,7 +14,7 @@
 }
 .button {
     position: fixed;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     bottom: 0;
     border-radius: 7.5rem;
     width: 6.4rem;

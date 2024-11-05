@@ -1,10 +1,11 @@
 //import logo from './platzi.webp';
-import { MainSection } from './MainSection';
-import { TodoCounter } from './TodoCounter'
-import { TodoSearch } from './TodoSearch';
-import { TodoList } from './TodoList';
-import { TodoItem } from './TodoItem';
-import { TodoButton } from './TodoButton';
+import { MainSection } from './components/MainSection';
+import { TodoCounter } from './components/TodoCounter'
+import { TodoSearch } from './components/TodoSearch';
+import { TodoList } from './components/TodoList';
+import { TodoItem } from './components/TodoItem';
+import { TodoButton } from './components/TodoButton';
+import { ToggleTheme } from './components/ToggleTheme';
 import React from 'react';
 
 const defaultTodos = [
@@ -24,6 +25,7 @@ function App() {
   // console.log(numbers);
   return (
     <MainSection>
+      <ToggleTheme/>
       <TodoCounter cantidad={4} total={5}/>
       <TodoSearch/>
       <TodoList>

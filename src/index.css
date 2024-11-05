@@ -12,3 +12,6 @@ body {
   font-size: 1.6rem;
   background-color: #F2F4F5;
 }
+.dark-theme {
+  background-color: #272728;
+}

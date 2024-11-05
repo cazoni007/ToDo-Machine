@@ -1,0 +1,13 @@
+.toggleTheme {
+    position: absolute;
+    top: 1.5rem;
+    right: 3rem;
+    width: 5rem;
+    height: 3.2rem;
+    background: url('../assets/icons/toggle-switch-off.svg') center/cover no-repeat;
+}
+
+.toggleTheme:hover {
+    cursor: pointer;
+    background: url('../assets/icons/toggle-switch-on.svg') center/cover no-repeat;
+}

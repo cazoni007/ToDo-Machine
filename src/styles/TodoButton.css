@@ -22,7 +22,12 @@
     background-color: #61DAFA;
     border: 0;
     box-shadow: 0 0.5rem 2.5rem rgba(97, 218, 250, 0.5);
+    transform: rotate(0);
+    transition: .3s ease;
 }
 .button:hover {
     cursor: pointer;
+}
+.button:hover {
+    transform: rotate(360deg);
 }

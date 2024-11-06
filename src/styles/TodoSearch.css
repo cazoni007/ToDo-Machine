@@ -15,3 +15,7 @@
     color: #AAAAAA;
     text-align: center;
 }
+
+.search:focus {
+    outline-color: #61DAFA;
+}

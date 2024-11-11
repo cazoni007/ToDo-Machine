@@ -12,6 +12,9 @@
     width: 100%;
     padding: 0 1rem;
 }
+.content--finished {
+    text-decoration: line-through;
+}
 .closeIcon {
     position: relative;
     display: block;
@@ -38,6 +41,12 @@
     background: url('../assets/icons/Complete-Icon.svg') center/cover no-repeat;
     top: -1rem;
     left: 2rem;
+}
+.completeIcon--completed {
+    cursor: pointer;
+    width: 2.8rem;
+    height:2rem;
+    background: url('../assets/icons/complete-icon-green.svg') center/cover no-repeat;
 }
 .editIcon:hover{
     cursor: pointer;

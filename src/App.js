@@ -30,7 +30,7 @@ function App() {
       <TodoSearch/>
       <TodoList>
         {defaultTodos.map(todo => (
-          <TodoItem key={todo.text} contenido={todo.text}/>
+          <TodoItem key={todo.text} contenido={todo.text} completed={todo.completed}/>
         ))} 
       </TodoList>
       <TodoButton/>

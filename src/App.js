@@ -23,11 +23,13 @@ function App() {
   // const lista = document.getElementsByTagName('ul');
   // const numbers = lista[0].children.length;
   // console.log(numbers);
+  const [searchValue, setSearchValue] = React.useState('');
+  console.log(searchValue);
   return (
     <MainSection>
       <ToggleTheme/>
       <TodoCounter cantidad={4} total={5}/>
-      <TodoSearch/>
+      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
       <TodoList>
         {defaultTodos.map(todo => (
           <TodoItem key={todo.text} contenido={todo.text} completed={todo.completed}/>

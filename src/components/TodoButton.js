@@ -1,20 +1,14 @@
 import React from 'react';
-import { CreateTodo } from './CreateTodo.js';
+
 import '../styles/TodoButton.css';
 
-function TodoButton () {
-    const [isOpen, setIsOpen] = React.useState(false);
-    const buttonClick = () => {setIsOpen(true);};
-    const closeModal = () => {setIsOpen(false);};
+function TodoButton (props) {
     return (
-        <>
             <div className='buttonContainer'>
-                <button className="button" onClick={buttonClick}>
+                <button className="button" onClick={props.buttonClick}>
                     <span className="buttonIcon"></span>
                 </button>
             </div>
-            {isOpen && <CreateTodo closeModal = {closeModal}/>} 
-        </>
     )
 }
 

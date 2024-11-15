@@ -1,11 +1,14 @@
 import '../styles/TodoItem.css';
 function TodoItem (props) {
     const completado = (event) => {
-        props.completado(event.target.closest('li').innerText);
+        props.completado(Number(event.target.closest('li').id));
+    }
+    const cerrar = (event) => {
+        props.cerrar(Number(event.target.closest('li').id));
     }
     return (
-        <li className="todoItem">
-            <span className='closeIcon'></span>
+        <li className="todoItem" id={props.id}>
+            <span className='closeIcon' onClick={cerrar}></span>
             <span className='editIcon'></span> 
             <span className={`completeIcon ${props.completed && "completeIcon--completed"}`} onClick={completado}></span>
             <p className={`content ${props.completed && "content--finished"}`}>{props.contenido}</p>

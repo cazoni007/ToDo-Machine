@@ -10,22 +10,7 @@ import { CreateTodo } from './components/CreateTodo';
 import React from 'react';
 
 // Tareas predeterminadas para iniciar la aplicación
-const defaultTodos = [
-    {text: 'Cortar cebolla skjhdkfj ahsdlf kjahsdkf hagsk djfgaskj dfga skdjfhagsdfj',
-    completed: true },
-    {text: 'Jugár con la llorona',
-    completed: false },
-    {text: 'Acabar el curso de platzi',
-    completed: false },
-    {text: 'Acabar con este array xd',
-      completed: true },
-    {text: 'Acabar el curso de platzi1',
-    completed: false },
-    {text: 'Escribiendo un texto medianamente largo para ver como se comporta la pagina y si no ocurre un overflow, ya que seguramente habran personas que quieran escribir pasos o tareas largas y en ves de usar distintas lo querran poner en uno solo por lo que esto deberia funcionar normal y no bugearse, ademas poder escribir palabras como otorrinolaringologia o medescorazonare xdddddd',
-      completed: true },
-    {text: 'Nuevo tarea pro',
-    completed: false },
-  ];
+const defaultTodos = [];
 
 function App() {
   // Estado para manejar las tareas
@@ -53,21 +38,30 @@ function App() {
   // Cierra el modal
   const closeModal = () => setIsOpen(false);
 
-  // Agrega una nueva tarea al arreglo de todos 
+  // Agrega una nueva tarea al arreglo de todos
+  let contadorId = React.useRef(1); 
   const addTodo = (todo) => {
-      todos.push({text: todo, completed: false}); // Agrega el nuevo TODO al array/estado todos
+      const nuevoTodo = {text: todo, completed: false, id: contadorId.current};
+      contadorId.current++;
+      const nuevoArray = [...todos, nuevoTodo]; // Agrega el nuevo TODO al array/estado todos
+      setTodos(nuevoArray);
   };
 
   const completado = (elemento) => {
     const newArray = [...todos];
     newArray.forEach(todo => {
-      if(todo.text === elemento) {
+      if(todo.id === elemento) {
         todo.completed = !todo.completed;
       } 
     })
     console.log(elemento);
     setTodos(newArray);
   };
+  const cerrar = (id) => {
+    const newArray = [...todos];
+    const filterArray = newArray.filter(todo => todo.id !== id);
+    setTodos(filterArray);
+  }
   return (
     <MainSection>
       <ToggleTheme/>
@@ -76,7 +70,7 @@ function App() {
       <TodoList>
         {
            searchedValues.map(todo => (
-             <TodoItem key={todo.text} contenido={todo.text} completed={todo.completed} completado = {completado}/>))
+             <TodoItem key={todo.text} contenido={todo.text} completed={todo.completed} completado = {completado} id ={todo.id} cerrar = {cerrar}/>))
         } 
       </TodoList>
       <TodoButton buttonClick = {buttonClick}/>

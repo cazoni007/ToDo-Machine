@@ -20,11 +20,19 @@
     border-radius: 7.5rem;
     width: 6.4rem;
     height: 6.4rem;
-    background-color: #61DAFA;
+    
     border: 0;
-    box-shadow: 0 0.5rem 2.5rem rgba(97, 218, 250, 0.5);
+    
     transform: rotate(0);
     transition: .3s ease;
+}
+.button--lightTheme {
+    background-color: #61DAFA;
+    box-shadow: 0 0.5rem 2.5rem rgba(97, 218, 250, 0.5);
+}
+.button--darkTheme {
+    background-color: #53409F;
+    box-shadow: 0 0.5rem 2.5rem rgba(119, 78, 255, 0.5);
 }
 .button:hover {
     cursor: pointer;

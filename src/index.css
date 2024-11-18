@@ -12,6 +12,10 @@ body {
   font-size: 1.6rem;
   background-color: #F2F4F5;
 }
+.light-theme {
+  background-color: #F2F4F5; /* Fondo claro */
+}
+
 .dark-theme {
-  background-color: #272728;
+  background-color: #272728; /* Fondo oscuro */
 }

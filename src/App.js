@@ -8,6 +8,7 @@ import { TodoButton } from './components/TodoButton';
 import { ToggleTheme } from './components/ToggleTheme';
 import { CreateTodo } from './components/CreateTodo';
 import React from 'react';
+import Swal from "sweetalert2";
 
 // Tareas predeterminadas para iniciar la aplicación
 const defaultTodos = [];
@@ -57,23 +58,93 @@ function App() {
     console.log(elemento);
     setTodos(newArray);
   };
-  const cerrar = (id) => {
-    const newArray = [...todos];
-    const filterArray = newArray.filter(todo => todo.id !== id);
-    setTodos(filterArray);
+  const cerrar = async (id) => {
+    // Encuentra el todo basado en el id
+    const todoParaEliminar = todos.find((todo) => todo.id === id);
+  
+    if (todoParaEliminar.completed) {
+      // Mostrar mensaje directo si está completado
+      await Swal.fire({
+        title: "Eliminado",
+        text: `La tarea ha sido eliminada.`,
+        icon: "success",
+      });
+  
+      // Actualiza el estado eliminando el todo
+      setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+    } else {
+      // Mostrar confirmación si NO está completado
+      const result = await Swal.fire({
+        title: "¿Estás seguro?",
+        text: `La tarea no está completada. ¿Deseas eliminarla de todas formas?`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, eliminar",
+        cancelButtonText: "Cancelar",
+      });
+  
+      if (result.isConfirmed) {
+        // Actualiza el estado eliminando el todo
+        setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+  
+        // Mostrar mensaje de éxito
+        Swal.fire("¡Eliminado!", `La tarea ha sido eliminada.`, "success");
+      }
+    }
+  };
+  const editar = async (id) => {
+    // Encuentra el todo que se desea editar
+    const todoParaEditar = todos.find((todo) => todo.id === id);
+  
+    // Muestra un cuadro de entrada de texto con el valor actual del todo
+    const { value: nuevoTexto } = await Swal.fire({
+      title: "Editar tarea",
+      input: "text",
+      inputValue: todoParaEditar.text, // Muestra el texto actual en el input
+      showCancelButton: true,
+      confirmButtonText: "Guardar",
+      cancelButtonText: "Cancelar",
+      inputValidator: (value) => {
+        if (!value.trim()) {
+          return "El texto no puede estar vacío";
+        }
+      },
+    });
+  
+    // Si el usuario confirma y hay un nuevo texto válido
+    if (nuevoTexto) {
+      // Actualiza el estado con el texto modificado
+      setTodos((prevTodos) =>
+        prevTodos.map((todo) =>
+          todo.id === id ? { ...todo, text: nuevoTexto } : todo
+        )
+      );
+  
+      // Muestra una notificación de éxito
+      Swal.fire("¡Actualizado!", "La tarea ha sido editada con éxito.", "success");
+    }
+  };
+  const [theme, setTheme] = React.useState('lightTheme');
+  const toggleTheme = () => {
+    setTheme(prevTheme => prevTheme === 'lightTheme' ? 'darkTheme' : 'lightTheme')
   }
+  React.useEffect(() => {
+    document.body.classList.remove("light-theme", "dark-theme");
+    document.body.classList.add(theme === "lightTheme" ? "light-theme" : "dark-theme");
+  }, [theme]);
   return (
     <MainSection>
-      <ToggleTheme/>
-      <TodoCounter cantidad={completedTodos} total={todos.length} setTodos={setTodos}/>
+      <ToggleTheme toggleTheme = {toggleTheme} theme={theme}/>
+      <TodoCounter cantidad={completedTodos} total={todos.length} setTodos={setTodos} theme={theme}/>
       <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
       <TodoList>
         {
            searchedValues.map(todo => (
-             <TodoItem key={todo.text} contenido={todo.text} completed={todo.completed} completado = {completado} id ={todo.id} cerrar = {cerrar}/>))
+             <TodoItem key={todo.text} contenido={todo.text} completed={todo.completed} 
+              completado = {completado} id ={todo.id} cerrar = {cerrar} editar = {editar}/>))
         } 
       </TodoList>
-      <TodoButton buttonClick = {buttonClick}/>
+      <TodoButton buttonClick = {buttonClick} theme={theme}/>
       {isOpen && <CreateTodo closeModal = {closeModal} addTodo = {addTodo}/>} 
     </MainSection>
   );

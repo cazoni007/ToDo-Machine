@@ -1,5 +1,5 @@
 /* Contenedor del switch */
-.toggleTheme {
+.lightTheme {
     position: absolute;
     top: 1.5rem;
     right: 3rem;
@@ -10,9 +10,24 @@
     transition: background-color 0.3s ease; /* Suaviza el cambio de fondo */
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3); /* Sombra para un efecto de profundidad */
 }
+.lightTheme:hover {
+    cursor: pointer;
+}
 
 /* Botón deslizante */
-.toggleTheme::before {
+.lightTheme::before {
+    content: "";
+    position: absolute;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%; /* Redondea el botón */
+    background-color: white; /* Color inicial del botón */
+    top: 0.5rem;
+    left: 0.4rem; /* Estado inicial (izquierda) */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Suaviza el movimiento y el cambio de color */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Sombra para el botón */
+}
+.darkTheme::before {
     content: "";
     position: absolute;
     width: 2.2rem;
@@ -26,12 +41,23 @@
 }
 
 /* Estado "on" */
-.toggleTheme:hover {
+.darkTheme {
+    position: absolute;
+    top: 1.5rem;
+    right: 3rem;
+    width: 5rem;
+    height: 3.2rem;
     background-color: #fff; /* Cambia el fondo a un color más claro cuando está en "on" */
+    border-radius: 1.6rem;
+    transition: background-color 0.3s ease; /* Suaviza el cambio de fondo */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3); /* Sombra para un efecto de profundidad */
+}
+.darkTheme:hover {
+    cursor: pointer;
 }
 
 /* Desplazamiento del botón hacia la derecha y cambio de color */
-.toggleTheme:hover::before {
+.darkTheme::before {
     transform: translateX(2.03rem); /* Mueve el botón a la derecha */
     background-color: #4f4d4d; /* Cambia el color del botón a blanco */
 }

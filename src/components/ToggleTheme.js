@@ -1,7 +1,7 @@
 import '../styles/ToggleTheme.css';
-function ToggleTheme() {
+function ToggleTheme(props) {
     return (
-        <div className="toggleTheme"></div>
+        <div className={props.theme} onClick={props.toggleTheme}></div>
     )
 }
 

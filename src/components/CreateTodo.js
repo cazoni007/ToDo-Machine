@@ -10,14 +10,18 @@ function CreateTodo (props) {
             props.addTodo(todo);
         }
     }
+    const setContainerTheme = props.theme === "lightTheme" ? "createToDo--lightTheme" : "createToDo--DarkTheme";
+    const setTitleTheme = props.theme === "lightTheme" ? "createToDo__title--lightTheme" : "createToDo__title--DarkTheme";
+    const setCreateButtonTheme = props.theme === "lightTheme" ? "createButtonTodo__add--lightTheme" : "createButtonTodo__add--DarkTheme";
+    const setCancelButtonTheme = props.theme === "lightTheme" ? "createButtonTodo__cancel--lightTheme" : "createButtonTodo__cancel--DarkTheme";
     return (
         <div className='modalOverlay'>
-            <div className='toDo'>
-                <h2 className='toDo__title'>Escribe tu nuevo TODO</h2>
+            <div className={`createToDo  ${setContainerTheme}`}>
+                <h2 className={`createToDo__title ${setTitleTheme}`}>Escribe tu nuevo TODO</h2>
                 <textarea type='text' placeholder='Podar el pasto' className='toDo__input' onChange={saveTodo}/>
                 <div className='toDo__buttonContainer'>
-                    <button className='buttonTodo buttonTodo--cancel' onClick={props.closeModal}>Cancelar</button>
-                    <button className='buttonTodo buttonTodo--add' onClick={addTodo}>Añadir</button>
+                    <button className={`createButtonTodo ${setCancelButtonTheme}`} onClick={props.closeModal}>Cancelar</button>
+                    <button className={`createButtonTodo ${setCreateButtonTheme}`} onClick={addTodo}>Añadir</button>
                 </div>
             </div>
         </div>

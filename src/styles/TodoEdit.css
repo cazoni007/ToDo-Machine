@@ -10,7 +10,7 @@
     align-items: center;
     z-index: 1000; /* Asegúrate de que esté encima de otros elementos */
 }
-.createToDo {
+.toDo {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -20,29 +20,31 @@
     right: 0;
     padding: 2rem 0;
     margin: 0 auto;
+
     border-radius: 0.2rem;
+
     width: 85%;
     max-width: 100rem;
 }
-.createToDo--lightTheme {
+.toDo--lightTheme {
     background-color: #FAFAFA;
     box-shadow: 0px 5px 50px rgba(97, 218, 250, 0.5);
 }
-.createToDo--DarkTheme {
+.toDo--darkTheme {
     background-color: #272728;
     box-shadow: 0px 5px 50px rgba(183, 85, 249, 0.3);
 }
-.createToDo__title {
+.toDo__title {
     font-size: 2rem;
     text-align: center;
     width: 60%;
     margin: 0 auto;
     padding-bottom: 2rem;
 }
-.createToDo__title--lightTheme {
+.toDo__title--lightTheme {
     color: #1E1E1F;
 }
-.createToDo__title--DarkTheme {
+.toDo__title--darkTheme {
     color: #FFFFFF
 }
 .toDo__input {
@@ -63,7 +65,7 @@
     display: flex;
     justify-content: space-evenly;
 }
-.createButtonTodo {
+.buttonTodo {
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 1.8rem;
@@ -72,18 +74,18 @@
     width: 30%;
     cursor: pointer;
 }
-.createButtonTodo__cancel--lightTheme {
+.buttonTodo--cancel-lightTheme {
     background-color: #FAFAFA;
 }
-.createButtonTodo__cancel--DarkTheme {
+.buttonTodo--cancel-darkTheme {
     background-color: #272728;
     color: #FFFFFF
 }
-.createButtonTodo__add--lightTheme {
+.buttonTodo--edit-lightTheme {
     background-color: #61DAFA;
     box-shadow: 0px 5px 25px rgba(97, 218, 250, 0.5);
 }
-.createButtonTodo__add--DarkTheme {
+.buttonTodo--edit-darkTheme {
     background-color: #53409F;
     box-shadow: 0 0.5rem 2.5rem rgba(119, 78, 255, 0.4);
 }

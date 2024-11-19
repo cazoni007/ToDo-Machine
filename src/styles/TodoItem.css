@@ -1,12 +1,18 @@
 .todoItem {
     width: 80%;
     max-width: 120rem;
-    background-color: #FAFAFA;
     margin: 2rem auto;
     border-radius: 0.2rem;
-    box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.15);
     list-style: none;
     padding: 1.5rem 0;
+}
+.todoItem--lightTheme {
+    background-color: #FAFAFA;
+    box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.15);
+}
+.todoItem--darkTheme {
+    background-color: #555555;
+    box-shadow: 0px 5px 50px rgba(183, 85, 249, 0.10);
 }
 .content {
     width: 100%;
@@ -15,35 +21,55 @@
 .content--finished {
     text-decoration: line-through;
 }
+.content--lightTheme {
+    color: #1E1E1F;
+}
+.content--darkTheme {
+    color: #FFFFFF
+}
 .closeIcon {
     position: relative;
     display: block;
-    width: 2rem;
-    height: 2rem;
-    background: url('../assets/icons/Close-Item.svg') center/cover no-repeat;
-    top: -2.5rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    top: -2.8rem;
     left: calc(100% - 3.2rem);
+}
+.closeIcon--lightTheme {
+    background: url('../assets/icons/Close-Item.svg') center/cover no-repeat;
+}
+.closeIcon--darkTheme {
+    background: url('../assets/icons/close-icon-white.svg') center/cover no-repeat;
 }
 .editIcon {
     position: relative;
     display: inline-block;
     width: 2rem;
     height: 2rem;
-    background: url('../assets/icons/Edit-Icon.svg') center/cover no-repeat;
     top: -1rem;
     left: 1rem;
+}
+.editIcon--lightTheme {
+    background: url('../assets/icons/Edit-Icon.svg') center/cover no-repeat;
+}
+.editIcon--darkTheme {
+    background: url('../assets/icons/edit-icon-light.svg') center/cover no-repeat;
 }
 .completeIcon {
     position: relative;
     display: inline-block;
     width: 2.8rem;
     height: 2rem;
-    background: url('../assets/icons/Complete-Icon.svg') center/cover no-repeat;
     top: -1rem;
     left: 2rem;
 }
+.completeIcon--lightTheme {
+    background: url('../assets/icons/Complete-Icon.svg') center/cover no-repeat;
+}
+.completeIcon--darkTheme {
+    background: url('../assets/icons/complete-icon-light.svg') center/cover no-repeat;
+}
 .completeIcon--completed {
-    cursor: pointer;
     width: 2.8rem;
     height:2rem;
     background: url('../assets/icons/complete-icon-green.svg') center/cover no-repeat;
@@ -54,13 +80,9 @@
 
 .closeIcon:hover {
     cursor: pointer;
-    width: 2rem;
-    height: 2rem;
     background: url('../assets/icons/close-icon-red.svg') center no-repeat;
 }
 .completeIcon:hover {
     cursor: pointer;
-    width: 2.8rem;
-    height:2rem;
     background: url('../assets/icons/complete-icon-green.svg') center/cover no-repeat;
 }

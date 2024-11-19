@@ -7,6 +7,7 @@ import { TodoItem } from './components/TodoItem';
 import { TodoButton } from './components/TodoButton';
 import { ToggleTheme } from './components/ToggleTheme';
 import { CreateTodo } from './components/CreateTodo';
+import { TodoEdit } from './components/TodoEdit'
 import React from 'react';
 import Swal from "sweetalert2";
 
@@ -15,7 +16,7 @@ const defaultTodos = [];
 
 function App() {
   // Estado para manejar las tareas
-  const [todos, setTodos] = React.useState(defaultTodos);
+  const [todos, setTodos] = React.useState(defaultTodos);  
 
   // Estado para manejar el valor de búsqueda
   const [searchValue, setSearchValue] = React.useState('');
@@ -92,38 +93,25 @@ function App() {
       }
     }
   };
-  const editar = async (id) => {
-    // Encuentra el todo que se desea editar
-    const todoParaEditar = todos.find((todo) => todo.id === id);
-  
-    // Muestra un cuadro de entrada de texto con el valor actual del todo
-    const { value: nuevoTexto } = await Swal.fire({
-      title: "Editar tarea",
-      input: "text",
-      inputValue: todoParaEditar.text, // Muestra el texto actual en el input
-      showCancelButton: true,
-      confirmButtonText: "Guardar",
-      cancelButtonText: "Cancelar",
-      inputValidator: (value) => {
-        if (!value.trim()) {
-          return "El texto no puede estar vacío";
-        }
-      },
-    });
-  
-    // Si el usuario confirma y hay un nuevo texto válido
-    if (nuevoTexto) {
-      // Actualiza el estado con el texto modificado
-      setTodos((prevTodos) =>
-        prevTodos.map((todo) =>
-          todo.id === id ? { ...todo, text: nuevoTexto } : todo
-        )
-      );
-  
-      // Muestra una notificación de éxito
-      Swal.fire("¡Actualizado!", "La tarea ha sido editada con éxito.", "success");
-    }
+  const [editModal, setEditModal] = React.useState(false);
+  const [idTodo, setIdTodo] = React.useState(null)
+  const editar = (id) => {
+    setEditModal(true);
+    setIdTodo(id)
   };
+  const editedTodo = () => {
+    const todoParaEditar = todos.find((todo) => todo.id === idTodo);
+    return(todoParaEditar.text)
+  }
+  const confirmEdit = (editedTodo) => {
+    
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === idTodo ? { ...todo, text: editedTodo } : todo
+      )
+    );
+  }
+  const closeEdit = () => setEditModal(false);
   const [theme, setTheme] = React.useState('lightTheme');
   const toggleTheme = () => {
     setTheme(prevTheme => prevTheme === 'lightTheme' ? 'darkTheme' : 'lightTheme')
@@ -141,11 +129,12 @@ function App() {
         {
            searchedValues.map(todo => (
              <TodoItem key={todo.text} contenido={todo.text} completed={todo.completed} 
-              completado = {completado} id ={todo.id} cerrar = {cerrar} editar = {editar}/>))
+              completado = {completado} id ={todo.id} cerrar = {cerrar} editar = {editar} theme = {theme}/>))
         } 
       </TodoList>
       <TodoButton buttonClick = {buttonClick} theme={theme}/>
-      {isOpen && <CreateTodo closeModal = {closeModal} addTodo = {addTodo}/>} 
+      {isOpen && <CreateTodo closeModal = {closeModal} addTodo = {addTodo} theme = {theme}/>}
+      {editModal && <TodoEdit closeEdit = {closeEdit} editedTodo = {editedTodo} confirmEdit = {confirmEdit} theme = {theme}/>}  
     </MainSection>
   );
 }

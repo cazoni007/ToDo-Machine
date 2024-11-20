@@ -132,7 +132,7 @@ function App() {
               completado = {completado} id ={todo.id} cerrar = {cerrar} editar = {editar} theme = {theme}/>))
         } 
       </TodoList>
-      <TodoButton buttonClick = {buttonClick} theme={theme}/>
+      <TodoButton buttonClick = {buttonClick} todoLength = {[...todos].length} theme={theme}/>
       {isOpen && <CreateTodo closeModal = {closeModal} addTodo = {addTodo} theme = {theme}/>}
       {editModal && <TodoEdit closeEdit = {closeEdit} editedTodo = {editedTodo} confirmEdit = {confirmEdit} theme = {theme}/>}  
     </MainSection>

@@ -1,9 +1,28 @@
+@keyframes expandir {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
 .buttonIcon {
     display: flex;
     margin: 0 auto;
     width: 3.072rem;
     height: 3.072rem;
     background: url('../assets/icons/Plus-Icon.svg') center/cover no-repeat;
+}
+.plusAnimation {
+    display: flex;
+    margin: 0 auto;
+    width: 3.072rem;
+    height: 3.072rem;
+    background: url('../assets/icons/Plus-Icon.svg') center/cover no-repeat;
+    animation: expandir 3s linear infinite;       
 }
 .buttonContainer {
     width: 80%;
@@ -20,11 +39,19 @@
     border-radius: 7.5rem;
     width: 6.4rem;
     height: 6.4rem;
-    
     border: 0;
-    
     transform: rotate(0);
     transition: .3s ease;
+}
+.animation {
+    position: fixed;
+    margin-bottom: 1.5rem;
+    bottom: 0;
+    border-radius: 7.5rem;
+    width: 6.4rem;
+    height: 6.4rem;
+    border: 0;
+    animation: expandir 3s linear infinite;
 }
 .button--lightTheme {
     background-color: #61DAFA;
@@ -36,7 +63,8 @@
 }
 .button:hover {
     cursor: pointer;
-}
-.button:hover {
     transform: rotate(360deg);
+}
+.animation:hover {
+    cursor: pointer;
 }

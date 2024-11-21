@@ -128,7 +128,7 @@ function App() {
       <TodoList>
         {
            searchedValues.map(todo => (
-             <TodoItem key={todo.text} contenido={todo.text} completed={todo.completed} 
+             <TodoItem key={todo.id} contenido={todo.text} completed={todo.completed} 
               completado = {completado} id ={todo.id} cerrar = {cerrar} editar = {editar} theme = {theme}/>))
         } 
       </TodoList>

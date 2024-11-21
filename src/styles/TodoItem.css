@@ -86,3 +86,9 @@
     cursor: pointer;
     background: url('../assets/icons/complete-icon-green.svg') center/cover no-repeat;
 }
+
+@media (min-width: 1000px) {
+    .content {
+        font-size: 2.2rem;
+    }
+}

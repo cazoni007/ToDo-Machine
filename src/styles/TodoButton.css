@@ -9,6 +9,17 @@
         transform: scale(1);
     }
 }
+@keyframes mover {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(1.5rem);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
 .buttonIcon {
     display: flex;
     margin: 0 auto;
@@ -22,7 +33,7 @@
     width: 3.072rem;
     height: 3.072rem;
     background: url('../assets/icons/Plus-Icon.svg') center/cover no-repeat;
-    animation: expandir 3s linear infinite;       
+    animation: expandir 2s linear infinite;       
 }
 .buttonContainer {
     width: 80%;
@@ -32,6 +43,25 @@
     flex-wrap: wrap;
     justify-content: flex-end;
 }
+.arrowLightAnimation {
+    position: fixed;
+    width: 8rem;
+    height: 5rem;
+    background: url('../assets/icons/arrow-right-sky.svg') center/cover no-repeat;
+    bottom: 2.3rem;
+    margin-right: 10rem;
+    animation: mover 1.5s linear infinite;
+}
+.arrowDarkAnimation {
+    position: fixed;
+    width: 8rem;
+    height: 5rem;
+    background: url('../assets/icons/arrow-righ-violet.svg') center/cover no-repeat;
+    bottom: 2.3rem;
+    margin-right: 10rem;
+    animation: mover 1.5s linear infinite;
+}
+
 .button {
     position: fixed;
     margin-bottom: 1.5rem;
@@ -51,7 +81,7 @@
     width: 6.4rem;
     height: 6.4rem;
     border: 0;
-    animation: expandir 3s linear infinite;
+    animation: expandir 2s linear infinite;
 }
 .button--lightTheme {
     background-color: #61DAFA;
@@ -67,4 +97,37 @@
 }
 .animation:hover {
     cursor: pointer;
+}
+
+@media (min-width: 1000px) {
+    .button {
+        width: 9.4rem;
+        height: 9.4rem;
+        margin-bottom: 2.5rem;
+    }
+    .animation {
+        width: 9.4rem;
+        height: 9.4rem;
+        margin-bottom: 2.5rem;
+    }
+    .buttonIcon {
+        width: 5.072rem;
+        height: 5.072rem;
+    }
+    .plusAnimation {
+        width: 5.072rem;
+        height: 5.072rem;
+    }
+    .arrowLightAnimation {
+        width: 10rem;
+        height: 7rem;
+        margin-right: 14rem;
+        bottom: 3.6rem;
+    }
+    .arrowDarkAnimation {
+        width: 10rem;
+        height: 7rem;
+        margin-right: 14rem;
+        bottom: 3.6rem;
+    }
 }

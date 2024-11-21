@@ -11,3 +11,9 @@
 .counter--lightTheme {
     color: #1E1E1F;
 }
+
+@media (min-width: 1000px) {
+    .counter {
+        font-size: 3rem;
+    }
+}

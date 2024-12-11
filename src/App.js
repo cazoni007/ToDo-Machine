@@ -12,7 +12,7 @@ import React from 'react';
 import Swal from "sweetalert2";
 
 // Tareas predeterminadas para iniciar la aplicación
-const defaultTodos = [];
+const defaultTodos = JSON.parse(localStorage.getItem("todos") || "[]");;
 
 function App() {
   // Estado para manejar las tareas
@@ -41,11 +41,14 @@ function App() {
   const closeModal = () => setIsOpen(false);
 
   // Agrega una nueva tarea al arreglo de todos
-  let contadorId = React.useRef(1); 
+  let contadorId = React.useRef(
+    todos.length > 0 ? Math.max(...todos.map((todo) => todo.id)) + 1 : 1
+  ); 
   const addTodo = (todo) => {
       const nuevoTodo = {text: todo, completed: false, id: contadorId.current};
       contadorId.current++;
       const nuevoArray = [...todos, nuevoTodo]; // Agrega el nuevo TODO al array/estado todos
+      localStorage.setItem("todos", JSON.stringify(nuevoArray));
       setTodos(nuevoArray);
   };
 
@@ -57,6 +60,7 @@ function App() {
       } 
     })
     console.log(elemento);
+    localStorage.setItem("todos", JSON.stringify(newArray));
     setTodos(newArray);
   };
   const cerrar = async (id) => {
@@ -72,7 +76,9 @@ function App() {
       });
   
       // Actualiza el estado eliminando el todo
-      setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+      const updatedTodos = todos.filter((todo) => todo.id !== id);
+      setTodos(updatedTodos);
+      localStorage.setItem("todos", JSON.stringify(updatedTodos));
     } else {
       // Mostrar confirmación si NO está completado
       const result = await Swal.fire({
@@ -86,8 +92,9 @@ function App() {
   
       if (result.isConfirmed) {
         // Actualiza el estado eliminando el todo
-        setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
-  
+        const updatedTodos = todos.filter((todo) => todo.id !== id);
+        setTodos(updatedTodos);
+        localStorage.setItem("todos", JSON.stringify(updatedTodos));
         // Mostrar mensaje de éxito
         Swal.fire("¡Eliminado!", `La tarea ha sido eliminada.`, "success");
       }
@@ -105,11 +112,13 @@ function App() {
   }
   const confirmEdit = (editedTodo) => {
     
-    setTodos((prevTodos) =>
-      prevTodos.map((todo) =>
+    setTodos((prevTodos) => {
+      const updatedTodos = prevTodos.map((todo) =>
         todo.id === idTodo ? { ...todo, text: editedTodo } : todo
       )
-    );
+    localStorage.setItem("todos", JSON.stringify(updatedTodos));
+    return updatedTodos
+    });
   }
   const closeEdit = () => setEditModal(false);
   const [theme, setTheme] = React.useState('lightTheme');

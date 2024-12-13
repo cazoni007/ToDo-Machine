@@ -121,9 +121,16 @@ function App() {
     });
   }
   const closeEdit = () => setEditModal(false);
-  const [theme, setTheme] = React.useState('lightTheme');
+  const [theme, setTheme] = React.useState(() =>{
+    const savedTheme = localStorage.getItem('theme');
+    return savedTheme || 'lightTheme';
+  }); 
   const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'lightTheme' ? 'darkTheme' : 'lightTheme')
+    setTheme((prevTheme) => {
+      const newTheme = prevTheme === 'lightTheme' ? 'darkTheme' : 'lightTheme'
+      localStorage.setItem('theme', newTheme)
+      return newTheme;
+    })
   }
   React.useEffect(() => {
     document.body.classList.remove("light-theme", "dark-theme");

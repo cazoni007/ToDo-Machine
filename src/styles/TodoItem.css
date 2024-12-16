@@ -71,8 +71,6 @@
     background: url('../assets/icons/complete-icon-light.svg') center/cover no-repeat;
 }
 .completeIcon--completed {
-    width: 2.8rem;
-    height:2rem;
     background: url('../assets/icons/complete-icon-green.svg') center/cover no-repeat;
 }
 .editIcon:hover{
@@ -81,7 +79,7 @@
 
 .closeIcon:hover {
     cursor: pointer;
-    background: url('../assets/icons/close-icon-red.svg') center no-repeat;
+    background: url('../assets/icons/close-icon-red.svg') center/cover no-repeat;
 }
 .completeIcon:hover {
     cursor: pointer;
@@ -91,5 +89,27 @@
 @media (min-width: 1000px) {
     .content {
         font-size: 2.2rem;
+    }
+    .closeIcon {
+        width: 4.4rem;
+        height: 4.4rem;
+        top: -3.8rem;
+        left: calc(100% - 5.2rem);
+    }
+    .editIcon {
+        position: relative;
+        display: inline-block;
+        width: 3rem;
+        height: 3rem;
+        top: -2rem;
+        left: 2rem;
+    }
+    .completeIcon {
+        position: relative;
+        display: inline-block;
+        width: 3.8rem;
+        height: 3rem;
+        top: -2rem;
+        left: 3rem;
     }
 }

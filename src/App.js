@@ -12,11 +12,29 @@ import React from 'react';
 import Swal from "sweetalert2";
 
 // Tareas predeterminadas para iniciar la aplicación
-const defaultTodos = JSON.parse(localStorage.getItem("todos") || "[]");;
+const useLocalStorage = (item, initialValue) => {
+  const getStoreValue = () => {
+    const storeValue = localStorage.getItem(item) 
+    try {    
+      return storeValue ? JSON.parse(storeValue) : initialValue
+    } catch (error) {
+      return  storeValue || initialValue  
+    }
+  }
+  const [value, setValue] = React.useState(getStoreValue);
+  const newValue = (value) => {
+    const isString = typeof(value);
+    const valueToStore = isString === "string" ? value : JSON.stringify(value);
+    setValue(value);
+    localStorage.setItem(item, valueToStore);
+  }
+
+  return [value, newValue]
+}
 
 function App() {
   // Estado para manejar las tareas
-  const [todos, setTodos] = React.useState(defaultTodos);  
+  const [todos, setTodos] = useLocalStorage('todos', []);  
 
   // Estado para manejar el valor de búsqueda
   const [searchValue, setSearchValue] = React.useState('');
@@ -48,7 +66,6 @@ function App() {
       const nuevoTodo = {text: todo, completed: false, id: contadorId.current};
       contadorId.current++;
       const nuevoArray = [...todos, nuevoTodo]; // Agrega el nuevo TODO al array/estado todos
-      localStorage.setItem("todos", JSON.stringify(nuevoArray));
       setTodos(nuevoArray);
   };
 
@@ -60,7 +77,6 @@ function App() {
       } 
     })
     console.log(elemento);
-    localStorage.setItem("todos", JSON.stringify(newArray));
     setTodos(newArray);
   };
   const cerrar = async (id) => {
@@ -78,7 +94,6 @@ function App() {
       // Actualiza el estado eliminando el todo
       const updatedTodos = todos.filter((todo) => todo.id !== id);
       setTodos(updatedTodos);
-      localStorage.setItem("todos", JSON.stringify(updatedTodos));
     } else {
       // Mostrar confirmación si NO está completado
       const result = await Swal.fire({
@@ -94,7 +109,6 @@ function App() {
         // Actualiza el estado eliminando el todo
         const updatedTodos = todos.filter((todo) => todo.id !== id);
         setTodos(updatedTodos);
-        localStorage.setItem("todos", JSON.stringify(updatedTodos));
         // Mostrar mensaje de éxito
         Swal.fire("¡Eliminado!", `La tarea ha sido eliminada.`, "success");
       }
@@ -116,25 +130,17 @@ function App() {
       const updatedTodos = prevTodos.map((todo) =>
         todo.id === idTodo ? { ...todo, text: editedTodo } : todo
       )
-    localStorage.setItem("todos", JSON.stringify(updatedTodos));
-    return updatedTodos
+      return updatedTodos
     });
   }
   const closeEdit = () => setEditModal(false);
-  const [theme, setTheme] = React.useState(() =>{
-    const savedTheme = localStorage.getItem('theme');
-    return savedTheme || 'lightTheme';
-  }); 
+  const [theme, setTheme] = useLocalStorage('theme', 'lightTheme');
   const toggleTheme = () => {
-    setTheme((prevTheme) => {
-      const newTheme = prevTheme === 'lightTheme' ? 'darkTheme' : 'lightTheme'
-      localStorage.setItem('theme', newTheme)
-      return newTheme;
-    })
+    setTheme(theme === 'lightTheme' ? 'darkTheme' : 'lightTheme')
   }
   React.useEffect(() => {
     document.body.classList.remove("light-theme", "dark-theme");
-    document.body.classList.add(theme === "lightTheme" ? "light-theme" : "dark-theme");
+    document.body.classList.add(theme === 'lightTheme' ? "light-theme" : "dark-theme");
   }, [theme]);
   return (
     <MainSection>

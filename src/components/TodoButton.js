@@ -11,7 +11,8 @@ function TodoButton (props) {
     return (
             <div className='buttonContainer'>
                 <span className={`${setArrowLight} ${setArrowDark}`}></span>
-                <button className={`${setTheme} ${setAnimation}`} onClick={props.buttonClick}>
+                <button className={`${setTheme} ${setAnimation}`} onClick={props.buttonClick} 
+                aria-label="Agregar nueva tarea">
                     <span className={`${setPlusAnimation}`}></span>
                 </button>
             </div>

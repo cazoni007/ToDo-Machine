@@ -8,11 +8,12 @@ import { TodoButton } from './components/TodoButton';
 import { ToggleTheme } from './components/ToggleTheme';
 import { CreateTodo } from './components/CreateTodo';
 import { TodoEdit } from './components/TodoEdit'
-import React from 'react';
+import React, { useEffect } from 'react';
 import Swal from "sweetalert2";
 
 // Tareas predeterminadas para iniciar la aplicación
 const useLocalStorage = (item, initialValue) => {
+  const [todoList, setTodoList] = React.useState(initialValue);
   const getStoreValue = () => {
     const storeValue = localStorage.getItem(item) 
     try {    
@@ -22,6 +23,17 @@ const useLocalStorage = (item, initialValue) => {
     }
   }
   const [value, setValue] = React.useState(getStoreValue);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] =  React.useState(false);
+  useEffect(() => {
+    try {
+      setLoading(false);
+      setTodoList(localStorage.getItem('todos'))
+    } catch (error) {
+      setError(true)
+      setLoading(false)
+    }
+  },[]);
   const newValue = (value) => {
     const isString = typeof(value);
     const valueToStore = isString === "string" ? value : JSON.stringify(value);
@@ -29,12 +41,16 @@ const useLocalStorage = (item, initialValue) => {
     localStorage.setItem(item, valueToStore);
   }
 
-  return [value, newValue]
+  return {value, newValue, loading, error, todoList}
 }
 
 function App() {
   // Estado para manejar las tareas
-  const [todos, setTodos] = useLocalStorage('todos', []);  
+  const {value: todos, 
+         newValue: setTodos,
+         loading,
+         error, 
+         todoList} = useLocalStorage('todos', []);  
 
   // Estado para manejar el valor de búsqueda
   const [searchValue, setSearchValue] = React.useState('');
@@ -134,7 +150,7 @@ function App() {
     });
   }
   const closeEdit = () => setEditModal(false);
-  const [theme, setTheme] = useLocalStorage('theme', 'lightTheme');
+  const {value: theme, newValue: setTheme} = useLocalStorage('theme', 'lightTheme');
   const toggleTheme = () => {
     setTheme(theme === 'lightTheme' ? 'darkTheme' : 'lightTheme')
   }
@@ -148,10 +164,12 @@ function App() {
       <TodoCounter cantidad={completedTodos} total={todos.length} setTodos={setTodos} theme={theme}/>
       <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
       <TodoList>
+        {loading && <p style={{width:'80%',margin:'2rem auto', maxWidth:'120rem'}}>Estamos cargando los todos</p>}
+        {error && <p style={{width:'80%',margin:'2rem auto', maxWidth:'120rem'}}>Ocurrio algun problema xd</p>}
         {
-           searchedValues.map(todo => (
-             <TodoItem key={todo.id} contenido={todo.text} completed={todo.completed} 
-              completado = {completado} id ={todo.id} cerrar = {cerrar} editar = {editar} theme = {theme}/>))
+          (!loading && todoList.length > 0) && searchedValues.map(todo => (
+            <TodoItem key={todo.id} contenido={todo.text} completed={todo.completed} 
+             completado = {completado} id ={todo.id} cerrar = {cerrar} editar = {editar} theme = {theme}/>))
         } 
       </TodoList>
       <TodoButton buttonClick = {buttonClick} todoLength = {[...todos].length} theme={theme}/>

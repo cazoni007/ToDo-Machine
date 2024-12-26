@@ -141,13 +141,9 @@ function App() {
     return(todoParaEditar.text)
   }
   const confirmEdit = (editedTodo) => {
-    
-    setTodos((prevTodos) => {
-      const updatedTodos = prevTodos.map((todo) =>
-        todo.id === idTodo ? { ...todo, text: editedTodo } : todo
-      )
-      return updatedTodos
-    });
+    const updatedTodo = todos.map((todo) =>
+      todo.id === idTodo ? { ...todo, text: editedTodo } : todo)
+    setTodos(updatedTodo)
   }
   const closeEdit = () => setEditModal(false);
   const {value: theme, newValue: setTheme} = useLocalStorage('theme', 'lightTheme');

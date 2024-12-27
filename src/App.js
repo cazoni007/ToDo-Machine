@@ -7,13 +7,14 @@ import { TodoItem } from './components/TodoItem';
 import { TodoButton } from './components/TodoButton';
 import { ToggleTheme } from './components/ToggleTheme';
 import { CreateTodo } from './components/CreateTodo';
-import { TodoEdit } from './components/TodoEdit'
+import { TodoEdit } from './components/TodoEdit';
+import { LoadingTodos } from './components/LoadingTodo';
 import React, { useEffect } from 'react';
 import Swal from "sweetalert2";
 
 // Tareas predeterminadas para iniciar la aplicación
 const useLocalStorage = (item, initialValue) => {
-  const [todoList, setTodoList] = React.useState(initialValue);
+  const [todoList, setTodoList] = React.useState(JSON.parse(localStorage.getItem('todos')));
   const getStoreValue = () => {
     const storeValue = localStorage.getItem(item) 
     try {    
@@ -26,13 +27,16 @@ const useLocalStorage = (item, initialValue) => {
   const [loading, setLoading] = React.useState(true);
   const [error, setError] =  React.useState(false);
   useEffect(() => {
-    try {
-      setLoading(false);
-      setTodoList(localStorage.getItem('todos'))
-    } catch (error) {
-      setError(true)
-      setLoading(false)
-    }
+    setTimeout(() => {
+      try {
+        setLoading(false);
+        const savedTodos = JSON.parse(localStorage.getItem('todos'));
+        setTodoList(savedTodos)
+      } catch (error) {
+        setError(true)
+        setLoading(false)
+      }
+    }, 2000);
   },[]);
   const newValue = (value) => {
     const isString = typeof(value);
@@ -160,8 +164,8 @@ function App() {
       <TodoCounter cantidad={completedTodos} total={todos.length} setTodos={setTodos} theme={theme}/>
       <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
       <TodoList>
-        {loading && <p style={{width:'80%',margin:'2rem auto', maxWidth:'120rem'}}>Estamos cargando los todos</p>}
-        {error && <p style={{width:'80%',margin:'2rem auto', maxWidth:'120rem'}}>Ocurrio algun problema xd</p>}
+        {loading &&  todoList.map(todo => (<LoadingTodos theme={theme} key={todo.id}/>))}
+        {error && <p style={{width:'80%',margin:'2rem auto', maxWidth:'120rem'}}>Ocurrio algun problema...</p>}
         {
           (!loading && todoList.length > 0) && searchedValues.map(todo => (
             <TodoItem key={todo.id} contenido={todo.text} completed={todo.completed} 

@@ -5,7 +5,7 @@ function LoadingTodos ({theme}) {
     const setParaphTheme = theme === "lightTheme" ?  "content--lightTheme" : "content--darkTheme";
     return (
         <ul>
-            <li className={`todoItem ${setLiTheme}`}>
+            <li className={`todoLoadingItem ${setLiTheme}`}>
             <p className={`content ${setParaphTheme}`}>Cargando todo...</p>
             </li>   
         </ul>

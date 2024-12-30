@@ -167,7 +167,7 @@ function App() {
         {loading &&  todoList.map(todo => (<LoadingTodos theme={theme} key={todo.id}/>))}
         {error && <p style={{width:'80%',margin:'2rem auto', maxWidth:'120rem'}}>Ocurrio algun problema...</p>}
         {
-          (!loading && todoList.length > 0) && searchedValues.map(todo => (
+          !loading && searchedValues.map(todo => (
             <TodoItem key={todo.id} contenido={todo.text} completed={todo.completed} 
              completado = {completado} id ={todo.id} cerrar = {cerrar} editar = {editar} theme = {theme}/>))
         } 

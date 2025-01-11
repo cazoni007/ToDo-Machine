@@ -1,17 +1,18 @@
 import React from 'react';
-
+import { TodoContext } from '../TodoContext';
 import '../styles/TodoButton.css';
 
-function TodoButton (props) {
-    const setTheme = props.theme === "lightTheme" ? "button--lightTheme" : "button--darkTheme";
-    const setAnimation = props.todoLength <= 0 ? "animation" : "button";
-    const setPlusAnimation = props.todoLength <= 0 ? "plusAnimation" : "buttonIcon";  
-    const setArrowLight = props.todoLength <= 0 && props.theme === "lightTheme" ? "arrowLightAnimation" : "";
-    const setArrowDark = props.todoLength <= 0 && props.theme === "darkTheme" ? "arrowDarkAnimation" : "";
+function TodoButton () {
+    const {theme, todoLength, buttonClick} = React.useContext(TodoContext);
+    const setTheme = theme === "lightTheme" ? "button--lightTheme" : "button--darkTheme";
+    const setAnimation = todoLength <= 0 ? "animation" : "button";
+    const setPlusAnimation = todoLength <= 0 ? "plusAnimation" : "buttonIcon";  
+    const setArrowLight = todoLength <= 0 && theme === "lightTheme" ? "arrowLightAnimation" : "";
+    const setArrowDark = todoLength <= 0 && theme === "darkTheme" ? "arrowDarkAnimation" : "";
     return (
             <div className='buttonContainer'>
                 <span className={`${setArrowLight} ${setArrowDark}`}></span>
-                <button className={`${setTheme} ${setAnimation}`} onClick={props.buttonClick} 
+                <button className={`${setTheme} ${setAnimation}`} onClick={buttonClick} 
                 aria-label="Agregar nueva tarea">
                     <span className={`${setPlusAnimation}`}></span>
                 </button>

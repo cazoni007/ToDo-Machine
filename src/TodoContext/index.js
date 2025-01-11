@@ -4,7 +4,7 @@ import { useLocalStorage } from './useLocalStorage';
 
 const TodoContext = React.createContext();
 
-function TodoProvider({Children}) {
+function TodoProvider({children}) {
     // Estado para manejar las tareas
     const {value: todos, 
         newValue: setTodos,
@@ -140,7 +140,7 @@ function TodoProvider({Children}) {
         editedTodo,
         confirmEdit
     }}>
-        {Children}
+        {children}
     </TodoContext.Provider>
     )
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDom from 'react-dom';
 import { TodoContext } from '../TodoContext';
 import '../styles/CreateTodo.css';
 
@@ -16,7 +17,7 @@ function CreateTodo () {
     const setTitleTheme = theme === "lightTheme" ? "createToDo__title--lightTheme" : "createToDo__title--DarkTheme";
     const setCreateButtonTheme = theme === "lightTheme" ? "createButtonTodo__add--lightTheme" : "createButtonTodo__add--DarkTheme";
     const setCancelButtonTheme = theme === "lightTheme" ? "createButtonTodo__cancel--lightTheme" : "createButtonTodo__cancel--DarkTheme";
-    return (
+    return ReactDom.createPortal(
         <div className='modalOverlay'>
             <div className={`createToDo  ${setContainerTheme}`}>
                 <h2 className={`createToDo__title ${setTitleTheme}`}>Escribe tu nuevo TODO</h2>
@@ -26,7 +27,8 @@ function CreateTodo () {
                     <button className={`createButtonTodo ${setCreateButtonTheme}`} onClick={addTodoPro}>Añadir</button>
                 </div>
             </div>
-        </div>
+        </div>,
+        document.getElementById('create-todo')
     )
 }  
 

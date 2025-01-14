@@ -1,9 +1,10 @@
 import React from 'react';
+import ReactDom from 'react-dom'
 import Swal from "sweetalert2";
 import { TodoContext } from '../TodoContext';
 import '../styles/TodoEdit.css';
 
-function TodoEdit (props) {
+function TodoEdit () {
     const {closeEdit, editedTodo, confirmEdit, theme} = React.useContext(TodoContext);
     const [todo, setTodo] = React.useState(editedTodo());
     const saveTodo = (event) => setTodo(event.target.value);
@@ -18,7 +19,7 @@ function TodoEdit (props) {
     const setTitleTheme = theme === "lightTheme" ? "toDo__title--lightTheme" : "toDo__title--darkTheme";
     const setEditButtonTheme = theme === "lightTheme" ? "buttonTodo--edit-lightTheme" : "buttonTodo--edit-darkTheme";
     const setCancelButtonTheme = theme === "lightTheme" ? "buttonTodo--cancel-lightTheme" : "buttonTodo--cancel-darkTheme";
-    return (
+    return ReactDom.createPortal(
         <div className='modalOverlay'>
             <div className={`toDo ${setToDoTheme}`}>
                 <h2 className={`toDo__title ${setTitleTheme}`}>Modifica tu TODO</h2>
@@ -28,7 +29,8 @@ function TodoEdit (props) {
                     <button className={`buttonTodo ${setEditButtonTheme}`} onClick={confirmEditPro}>Editar</button>
                 </div>
             </div>
-        </div>
+        </div>,
+        document.getElementById('edit-todo')
     )
 }  
 

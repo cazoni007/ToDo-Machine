@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/D:/Practice-web-programing/curso-react-intro/build/static/css/main.f6c401e8.css",
+    "main.js": "/D:/Practice-web-programing/curso-react-intro/build/static/js/main.75e729ef.js",
+    "index.html": "/D:/Practice-web-programing/curso-react-intro/build/index.html",
+    "static/media/Plus-Icon.svg": "/D:/Practice-web-programing/curso-react-intro/build/static/media/Plus-Icon.6c9f31a4a0f752604623.svg",
+    "static/media/Edit-Icon.svg": "/D:/Practice-web-programing/curso-react-intro/build/static/media/Edit-Icon.13549e03d3c0e76fefa3.svg",
+    "static/media/edit-icon-light.svg": "/D:/Practice-web-programing/curso-react-intro/build/static/media/edit-icon-light.b164230cf2eaee2549a7.svg",
+    "static/media/Close-Item.svg": "/D:/Practice-web-programing/curso-react-intro/build/static/media/Close-Item.cd5c484fa7822f809d85.svg",
+    "static/media/close-icon-red.svg": "/D:/Practice-web-programing/curso-react-intro/build/static/media/close-icon-red.2c806556ce81cc4e9b6d.svg",
+    "static/media/close-icon-white.svg": "/D:/Practice-web-programing/curso-react-intro/build/static/media/close-icon-white.dcdefd607bd727a5f611.svg",
+    "static/media/arrow-righ-violet.svg": "/D:/Practice-web-programing/curso-react-intro/build/static/media/arrow-righ-violet.4662d190352d69f22158.svg",
+    "static/media/arrow-right-sky.svg": "/D:/Practice-web-programing/curso-react-intro/build/static/media/arrow-right-sky.f02aed9abd334ba4f281.svg",
+    "static/media/Complete-Icon.svg": "/D:/Practice-web-programing/curso-react-intro/build/static/media/Complete-Icon.bdc4933869686f96d7ff.svg",
+    "static/media/complete-icon-green.svg": "/D:/Practice-web-programing/curso-react-intro/build/static/media/complete-icon-green.fdbb8a54704e36b87df1.svg",
+    "static/media/complete-icon-light.svg": "/D:/Practice-web-programing/curso-react-intro/build/static/media/complete-icon-light.e7e3b1843aeefbbec124.svg",
+    "main.f6c401e8.css.map": "/D:/Practice-web-programing/curso-react-intro/build/static/css/main.f6c401e8.css.map",
+    "main.75e729ef.js.map": "/D:/Practice-web-programing/curso-react-intro/build/static/js/main.75e729ef.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f6c401e8.css",
+    "static/js/main.75e729ef.js"
+  ]
+}

@@ -1,12 +1,25 @@
-# Repositorio base del Curso de Introducción a React.js en Platzi
+# 📝 ToDo Machine
 
-¡Hola, Platzinauta!
+Bienvenido a **ToDo Machine**, una aplicación minimalista para la gestión de tareas. 
 
-En este repositorio encontrarás el código de todas las clases del [Curso de Introducción a React.js](https://platzi.com/reactjs). Para empezar solo debes clonar este repositorio (`git clone`), instalar sus dependencias (`npm i`) y ejecutar la aplicación (`npm start`).
+👉 **[Prueba la aplicación aquí](https://cazoni007.github.io/ToDo-Machine)**
 
-La rama principal contiene el código con el que eempezamos el curso. En las demás ramas encontrarás el código de las siguientes clases y finalmente el deploy de la aplicación.
+---
 
-¡Mucha suerte aprendiendo React! #NuncaParesDeAprender
+### 🌟 Características principales:
+- Interfaz sencilla e intuitiva.
+- Funcionalidad para crear, editar y eliminar tareas.
+- Persistencia de datos en **localStorage**, para que tus tareas se mantengan aunque cierres el navegador.
+- Implementación de **React Portals** para manejar modales de manera limpia.
+- Diseño responsivo para que funcione perfectamente en dispositivos móviles y de escritorio.
+
+### 🛠 Tecnologías utilizadas:
+- **React**: Framework principal de la aplicación.
+- **React Context**: Para manejar el estado global.
+- **localStorage**: Para guardar las tareas de manera local.
+- **GitHub Pages**: Para el despliegue de la aplicación.
+
+---
 
 ## Getting Started with Create React App
 

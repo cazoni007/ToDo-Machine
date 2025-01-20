@@ -52,7 +52,7 @@ function TodoProvider({children}) {
             todo.completed = !todo.completed;
         } 
         })
-        console.log(elemento);
+        //console.log(elemento);
         setTodos(newArray);
     };
     const cerrar = async (id) => {
@@ -138,7 +138,7 @@ function TodoProvider({children}) {
         closeModal,
         addTodo,
         editedTodo,
-        confirmEdit
+        confirmEdit,
     }}>
         {children}
     </TodoContext.Provider>

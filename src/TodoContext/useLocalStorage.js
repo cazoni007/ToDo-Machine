@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 
 const useLocalStorage = (item, initialValue) => {
-  const [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem('todos')));
+  const [todoList, setTodoList] = useState(() => {
+    const savedTodos = localStorage.getItem('todos');
+    return savedTodos ? JSON.parse(savedTodos) : [];
+  });
   const getStoreValue = () => {
     const storeValue = localStorage.getItem(item) 
     try {    
